@@ -1,0 +1,62 @@
+.draggable_colors{
+    width: 10px;
+    height: 10px;
+    margin: 10px;
+}
+
+.draggable_font_color{
+    position: absolute;
+    top: -35px;
+    right: 10px;
+
+}
+.draggable_border_color{
+    position: absolute;
+    top: -35px;
+    right: 80px;
+}
+.draggable_font_size{
+    position: absolute;
+    top: -30px;
+    right: 150px;
+}
+.box_content{
+  text-align: center;
+  overflow: hidden;
+
+}
+.box_content div{
+  background: white;
+  width: fit-content;
+  border-radius: 7px;
+  margin: auto;
+  padding: 0 20px;
+}
+
+.draggable_div {
+  position: absolute;
+  display: flex;
+      justify-content: center;
+    flex-direction: column;
+//   width: 100px;
+//   height: 100px;
+//   min-height: 6.5em;
+  border: 5px #7da332  solid;
+  margin: 1rem 0 0 1rem;
+  padding: 10px;
+//   background-color: #ffffff94;
+//   color: #71639e;
+  border-radius: 10px;
+  touch-action: none;
+  user-select: none;
+//   transform: translate(0px, 0px);
+  box-shadow: rgb(211, 211, 212) 0px 0px 15px;
+
+}
+
+.diagram_image_preview{
+    z-index: -1;
+    position: absolute;
+}
+
+

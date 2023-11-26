@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="sd_project_overview_daily_report_a4" model="report.paperformat">
+    <field name="name">Project Overview Daily A4 Landscape</field>
+    <field name="default" eval="True"/>
+    <field name="format">custom</field>
+    <field name="page_height">297</field>
+    <field name="page_width">210</field>
+    <field name="orientation">Landscape</field>
+    <field name="margin_top">10</field>
+    <field name="margin_bottom">5</field>
+    <field name="margin_left">5</field>
+    <field name="margin_right">5</field>
+    <field name="header_line" eval="False"/>
+    <field name="header_spacing">3</field>
+    <field name="dpi">100</field>
+</record>
+
+    <record id="daily_report" model="ir.actions.report">
+        <field name="name">Project Overview Daily Report</field>
+        <field name="model">sd_project_overview.personnel</field>
+        <field name="report_type">qweb-html</field>
+<!--        <field name="report_type">xlsx</field>-->
+<!--        <field name="report_type">qweb-pdf</field>-->
+        <field name="report_name">sd_project_overview.daily_report_template</field>
+        <field name="report_file">sd_project_overview.workplace_report</field>
+        <field name="print_report_name">f'oeid_overview_{object.name}' </field>
+        <field name="paperformat_id" ref="sd_project_overview_daily_report_a4"/>
+        <field name="binding_model_id" ref="model_sd_project_overview_personnel"/>
+        <field name="binding_type">report</field>
+
+    </record>
+
+</odoo>

@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="daily_report_template">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <div class="container mt-2">
+                        <div t-if="errors" class="border border-warning rounded p-3 text-center">
+                            <p t-foreach="errors" t-as="error" t-esc="error"></p>
+                        </div>
+                        <div t-if="not errors" class="col" style="direction: ltr !important; text-align: left;">
+                            <div class="row mx-auto">
+                                <div class="col-3 p-0">
+                                    <div class="text-center">
+                                        <img alt="Logo" t-att-src="'/logo?company=1'" t-att-alt="''"
+                                             style=" height: 150px;" height="150"/>
+                                    </div>
+                                </div>
+                                <div class="col-6 text-center ">
+                                    <div class="h2 mb-2">H.S.E Daily Report</div>
+                                    <div class="h2 my-3" t-esc="project"></div>
+                                    <div class="h5 mt-5">Date:
+                                        <span t-esc="record_date"></span>
+                                    </div>
+                                </div>
+                                <div class="col-3 p-0">
+                                    <div class="text-center mb-3">
+                                        <img alt="Logo" t-att-src="client_logo" t-att-alt="''"
+                                             style="height: 100px;" height="100"/>
+                                    </div>
+                                    <div class="">
+                                        <div class="row rounded-top border mx-0">
+                                            <div class="col-7  bg-600 text-white overview_incident_report_name"
+                                            style="border-top-left-radius: 4px;">Weather:</div>
+                                            <div class="col-5 px-2" t-esc="weather['status']"></div>
+                                        </div>
+                                        <div class="row  border  mx-0">
+                                            <div class="col-7 bg-600 text-white overview_incident_report_name">
+                                                <div class="row">
+                                                    <div class="col-8 align-self-center">Temperature</div>
+                                                    <div class="col-4">
+                                                        <div class="py-1">Max</div>
+                                                        <div class="py-1">Min</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-5 ">
+                                                <div class="row border-bottom">
+                                                    <div class=" px-2" t-esc="weather['max_temp']"></div>
+                                                    <div class="  overview_incident_report_name" t-esc="weather['temp_scale']"></div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class=" px-2"  t-esc="weather['min_temp']"></div>
+                                                    <div class=" overview_incident_report_name"  t-esc="weather['temp_scale']"></div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="row rounded-bottom border  mx-0">
+                                            <div class="col-7 bg-600 text-white overview_incident_report_name"
+                                            style="border-bottom-left-radius: 4px;">Wind Speed:</div>
+                                            <div class=" px-2" t-esc="weather['wind_speed']"></div>
+                                            <div class=" overview_incident_report_name" t-esc="weather['speed_scale']"></div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col p-0 my-2 mx-auto">
+                                <div class="row rounded-top bg-dark text-white border mx-auto ">
+                                    <div class="col-6">Form Code:
+                                        <span t-esc="mis_ref['form']"></span>
+                                    </div>
+                                    <div class="col-6">Ref Code:
+                                        <span t-esc="mis_ref['ref']"></span>
+                                    </div>
+                                </div>
+
+                                <div class="row mx-0">
+                                    <div class="col-3 ">
+                                        <div class="row border-left border-right">
+                                            <div class="col-5 align-self-center px-1 mx-0">Subcontractor</div>
+                                            <div class="col-7">
+                                                <div class="row border-bottom">
+                                                    <div class="col-6 overview_incident_report_name">Daily</div>
+                                                    <div class="col-6 px-0" t-esc="personnel['subcont']['daily']"></div>
+                                                </div>
+<!--                                                <div class="row">-->
+<!--                                                    <div class="col-6 overview_incident_report_name">Average</div>-->
+<!--                                                    <div class="col-6 px-0" t-esc="personnel['subcont']['average']"></div>-->
+<!--                                                </div>-->
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-3 ">
+                                        <div class="row border-left">
+                                            <div class="col-5 align-self-center px-1">Contractor</div>
+                                            <div class="col-7">
+                                                <div class="row border-bottom">
+                                                    <div class="col-6 overview_incident_report_name">Daily</div>
+                                                    <div class="col-6 px-0" t-esc="personnel['cont']['daily']"></div>
+                                                </div>
+<!--                                                <div class="row">-->
+<!--                                                    <div class="col-6 overview_incident_report_name">Average</div>-->
+<!--                                                    <div class="col-6 px-0" t-esc="personnel['cont']['average']"></div>-->
+<!--                                                </div>-->
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-3 ">
+                                        <div class="row border-left">
+                                            <div class="col-5 align-self-center px-1">Local</div>
+                                            <div class="col-7">
+                                                <div class="row border-bottom">
+                                                    <div class="col-6 overview_incident_report_name">Daily</div>
+                                                    <div class="col-6 px-0" t-esc="personnel['local']['daily']"></div>
+                                                </div>
+<!--                                                <div class="row">-->
+<!--                                                    <div class="col-6 overview_incident_report_name">Average</div>-->
+<!--                                                    <div class="col-6 px-0" t-esc="personnel['local']['average']"></div>-->
+<!--                                                </div>-->
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-3 ">
+                                        <div class="row border-left border-right">
+                                            <div class="col-5 align-self-center px-1">Client</div>
+                                            <div class="col-7">
+                                                <div class="row border-bottom">
+                                                    <div class="col-6 overview_incident_report_name">Daily</div>
+                                                    <div class="col-6 px-0" t-esc="personnel['client']['daily']"></div>
+                                                </div>
+<!--                                                <div class="row">-->
+<!--                                                    <div class="col-6 overview_incident_report_name">Average</div>-->
+<!--                                                    <div class="col-6 px-0" t-esc="personnel['client']['average']"></div>-->
+<!--                                                </div>-->
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row border mx-0 p-2 ">
+                                    <div class="col-3 mx-0 my-0">Today's Personnel:
+                                        <span t-esc="personnel['total']"></span>
+                                    </div>
+<!--                                    <div class="col-2 mx-0 my-0">Arrival:-->
+<!--                                        <span t-esc="personnel['arrival']"></span>-->
+<!--                                    </div>-->
+<!--                                    <div class="col-2 mx-0 my-0">Departure:-->
+<!--                                        <span t-esc="personnel['departure']"></span>-->
+<!--                                    </div>-->
+                                    <div class="col-3 mx-0 my-0">Daily Man/hr:
+                                        <span t-esc="man_hr['daily']"></span>
+                                    </div>
+                                    <div class="col-3 mx-0 my-0">Monthly Man/hr:
+                                        <span t-esc="man_hr['monthly']"></span>
+                                    </div>
+                                    <div class="col-3 mx-0 my-0">Cum Man/hr:
+                                        <span t-esc="man_hr['cum']"></span>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+                            <div class="col p-0 my-3 mx-auto">
+                                <div class="border rounded-top mx-0 bg-dark text-white text-center">Incidents</div>
+                                <table class="table table-bordered overview_incident_report">
+                                    <thead>
+                                        <tr class="bg-300 p-0">
+                                            <th class="h6" t-esc="st_header[0]"></th>
+                                            <th t-foreach="st_header[1:]" t-as="head" t-esc="head"></th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr t-foreach="statistics" t-as="row">
+                                            <td t-foreach="row" t-as="data" t-esc="data"></td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+                            <div class="col p-0 my-2 mx-auto">
+
+                                <div class="row text-center  p-0 mx-auto align-self-center">
+                                    <div class="col-6" style="padding: 0 10px 0 0;">
+                                        <div class="bg-dark text-center rounded-top">Meetings</div>
+                                        <table class="table overview_reports">
+                                            <thead>
+                                                <tr>
+                                                    <th t-foreach="train_header" t-as="head" t-esc="head"></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr t-foreach="train_table" t-as="row" >
+                                                    <td t-foreach="row" t-as="item" t-esc="item"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div class="col-6" style="padding: 0 0 0 10px;">
+                                        <div class="bg-dark text-center rounded-top">Reports</div>
+                                        <table class="table overview_reports">
+                                            <thead>
+                                                <tr>
+                                                    <th t-foreach="report_header" t-as="head" t-esc="head"></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr t-foreach="report_table" t-as="row" >
+                                                    <td t-foreach="row" t-as="item" t-esc="item"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col p-0 my-2 mx-auto iransans_font">
+                                <div class="border rounded-top mx-0 bg-dark text-white text-center">Actions</div>
+                                <div t-foreach="daily_actions" t-as="action" style="font-size: .8rem; direction:rtl !important">
+                                    <div class="border-bottom mx-0 text-left" t-esc="action"></div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

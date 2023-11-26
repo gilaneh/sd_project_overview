@@ -1,0 +1,93 @@
+<odoo>
+    <data>
+        <!-- ==================================================  sd_project_overview.values ====================-->
+
+        <record model="ir.ui.view" id="sd_project_overview_values_list">
+            <field name="name">Project Values</field>
+            <field name="model">sd_project_overview.values</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom" multi_edit="1">
+                    <field name="id" />
+                    <field name="create_date" />
+                    <field name="last_rec" invisible="1" />
+                    <field name="project" />
+                    <field name="value_type" domain="[('project', '=', project)]"/>
+                    <field name="plan" />
+                    <field name="actual" />
+
+
+                </tree>
+            </field>
+        </record>
+        <!-- ==================================================  sd_project_overview.value_types ====================-->
+
+        <record model="ir.ui.view" id="sd_project_overview_value_types_list">
+            <field name="name">Project value_types</field>
+            <field name="model">sd_project_overview.value_types</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom" multi_edit="1">
+                    <field name="project" />
+                    <field name="name" />
+
+
+                </tree>
+            </field>
+        </record>
+
+
+        <!-- ==================================================  Search ====================-->
+
+        <record model="ir.ui.view" id="sd_project_overview_values_list_search">
+            <field name="name">Values Search</field>
+            <field name="model">sd_project_overview.values</field>
+            <field name="arch" type="xml">
+                <search string="Dealers">
+                    <field name="last_rec"/>
+                    <filter string="Last Records" name="last_records" domain="[('last_rec', '=', True)]"/>
+                </search>
+            </field>
+        </record>
+
+
+        <!-- ==================================================  Action Window ====================-->
+
+        <record model="ir.actions.act_window" id="sd_project_overview.action_window_values">
+            <field name="name">Project Values</field>
+            <field name="res_model">sd_project_overview.values</field>
+            <field name="view_mode">tree</field>
+            <field name="context">{'search_default_last_records': 1}</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="sd_project_overview.action_window_value_types">
+            <field name="name">Project value_types</field>
+            <field name="res_model">sd_project_overview.value_types</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+
+
+
+        <!-- ==================================================  Menu ====================-->
+
+
+<!--        <menuitem name="Progress"-->
+<!--                  id="sd_project_overview.values_menu"-->
+<!--                  parent="sd_project_overview.overview_root_menu"-->
+<!--                  action="sd_project_overview.action_window_values"/>-->
+
+
+
+<!--        <menuitem name="Progress"-->
+<!--                  id="sd_project_overview.progress_setting_menu"-->
+<!--                  parent="sd_project_overview.settings_menu"/>-->
+
+<!--        <menuitem name="Value Types"-->
+<!--                  id="sd_project_overview.value_types_menu"-->
+<!--                  parent="sd_project_overview.progress_setting_menu"-->
+<!--                  action="sd_project_overview.action_window_value_types"/>-->
+
+
+
+
+    </data>
+</odoo>

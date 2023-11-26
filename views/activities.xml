@@ -1,0 +1,93 @@
+<odoo>
+    <data>
+        <!-- ==================================================  sd_project_overview.activities ====================-->
+
+        <record model="ir.ui.view" id="sd_project_overview_activities_list">
+            <field name="name">Project Activities</field>
+            <field name="model">sd_project_overview.activities</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom" multi_edit="1">
+                    <field name="code" options="{'readonly': [('parent_id', '!=', False)]}"/>
+                    <field name="name" />
+                    <field name="parent_id" domain="[('id', '!=', id)]"/>
+                    <field name="project" options="{'readonly': [('parent_id', '!=', False)]}" />
+                    <field name="activities_type" domain="[('project', '=', project)]"/>
+                    <field name="plan" />
+                    <field name="actual" />
+
+
+                </tree>
+            </field>
+        </record>
+        <!-- ==================================================  sd_project_overview.activitie_types ====================-->
+
+        <record model="ir.ui.view" id="sd_project_overview_activities_types_list">
+            <field name="name">Project Activities Types</field>
+            <field name="model">sd_project_overview.activities_types</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom" multi_edit="1">
+                    <field name="project" />
+                    <field name="name" />
+
+
+                </tree>
+            </field>
+        </record>
+
+
+        <!-- ==================================================  Search ====================-->
+
+        <record model="ir.ui.view" id="sd_project_overview_activities_list_search">
+            <field name="name">Activities Search</field>
+            <field name="model">sd_project_overview.activities</field>
+            <field name="arch" type="xml">
+                <search string="Dealers">
+<!--                    <field name="last_rec"/>-->
+<!--                    <filter string="Last Records" name="last_records" domain="[('last_rec', '=', True)]"/>-->
+                </search>
+            </field>
+        </record>
+
+
+        <!-- ==================================================  Action Window ====================-->
+
+        <record model="ir.actions.act_window" id="sd_project_overview.action_window_activities">
+            <field name="name">Project Activities</field>
+            <field name="res_model">sd_project_overview.activities</field>
+            <field name="view_mode">tree</field>
+            <field name="context">{'search_default_last_records': 1}</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="sd_project_overview.action_window_activities_types">
+            <field name="name">Project Activities Types</field>
+            <field name="res_model">sd_project_overview.activities_types</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+
+
+
+        <!-- ==================================================  Menu ====================-->
+
+
+<!--        <menuitem name="Activities"-->
+<!--                  id="sd_project_overview.activities_menu"-->
+<!--                  parent="sd_project_overview.overview_root_menu"-->
+<!--                  action="sd_project_overview.action_window_activities"/>-->
+
+
+
+<!--        <menuitem name="Activities"-->
+<!--                  id="sd_project_overview.progress_setting_menu"-->
+<!--                  parent="sd_project_overview.settings_menu"/>-->
+
+<!--        <menuitem name="Activities Types"-->
+<!--                  id="sd_project_overview.activities_types_menu"-->
+<!--                  parent="sd_project_overview.progress_setting_menu"-->
+<!--                  action="sd_project_overview.action_window_activities_types"/>-->
+
+
+
+
+    </data>
+</odoo>

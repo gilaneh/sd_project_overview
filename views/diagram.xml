@@ -1,0 +1,92 @@
+<odoo>
+    <data>
+        <!-- ==================================================  sd_project_overview.diagram ====================-->
+
+        <record model="ir.ui.view" id="sd_project_overview_diagram_list">
+            <field name="name">Diagram</field>
+            <field name="model">sd_project_overview.diagram</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="project" />
+                    <field name="image" widget="image" class="w-25"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="sd_project_overview_diagram_form">
+            <field name="name">Diagram</field>
+            <field name="model">sd_project_overview.diagram</field>
+            <field name="arch" type="xml">
+                <form js_class="diagram_process_form_view">
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                            <group>
+                                <field name="project" />
+                            </group>
+                        </group>
+                    <notebook>
+                        <page string="Image" class="sd_project_overview_image_page">
+                            <div>
+                                <field name="image" class="diagram_process_form_view_image border" style="direction: initial;" widget="image"/>
+                            </div>
+
+                        </page>
+                        <page string="Tasks">
+                            <group>
+                                <group>
+                                    <field name="task" domain="[('project_id', '=', project)]">
+                                        <tree>
+                                            <field name="name"/>
+                                        </tree>
+                                    </field>
+                                </group>
+                                <group>
+
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </form>
+            </field>
+        </record>
+
+
+        <!-- ==================================================  Search ====================-->
+
+        <record model="ir.ui.view" id="sd_project_overview_diagram_list_search">
+            <field name="name">sd_project_overview</field>
+            <field name="model">sd_project_overview.diagram</field>
+            <field name="arch" type="xml">
+                <search string="">
+                                <field name="name"/>
+                                <field name="project" />
+                    <group expand="0" string="Group By" colspan="4" col="4">
+                        <filter string="Project" name="project_group" domain="[]" context="{'group_by': 'project'}"/>
+
+                    </group>
+                </search>
+            </field>
+        </record>
+
+
+        <!-- ==================================================  Action Window ====================-->
+
+        <record model="ir.actions.act_window" id="sd_project_overview.action_window_diagram">
+            <field name="name">Diagram</field>
+            <field name="res_model">sd_project_overview.diagram</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_project_group': 1}</field>
+        </record>
+
+        <!-- ==================================================  Menu ====================-->
+
+<!--        <menuitem name="Diagram"-->
+<!--                  id="sd_project_overview.project_diagram_menu"-->
+<!--                  parent="overview_root_menu"-->
+<!--                  action="sd_project_overview.action_window_diagram"/>-->
+
+    </data>
+</odoo>

@@ -1,0 +1,54 @@
+<odoo>
+    <data>
+        <!-- ==================================================  sd_project_overview.location ====================-->
+
+        <record model="ir.ui.view" id="sd_project_overview_location_list">
+            <field name="name">Location</field>
+            <field name="model">sd_project_overview.location</field>
+            <field name="arch" type="xml">
+                <tree editable="top">
+<!--                    <field name="id" />-->
+                    <field name="diagram" />
+                    <field name="task_id" />
+                    <field name="point_x"/>
+                    <field name="point_y"/>
+                    <field name="point_w"/>
+                    <field name="point_h"/>
+                    <field name="point_size"/>
+                    <field name="point_color"/>
+                    <field name="point_border"/>
+                </tree>
+            </field>
+        </record>
+
+         <!-- ==================================================  Search ====================-->
+
+        <record model="ir.ui.view" id="sd_project_overview_location_list_search">
+            <field name="name">sd_project_overview</field>
+            <field name="model">sd_project_overview.location</field>
+            <field name="arch" type="xml">
+                <search string="">
+
+                </search>
+            </field>
+        </record>
+
+
+        <!-- ==================================================  Action Window ====================-->
+
+        <record model="ir.actions.act_window" id="sd_project_overview.action_window_location">
+            <field name="name">Location</field>
+            <field name="res_model">sd_project_overview.location</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- ==================================================  Menu ====================-->
+
+        <menuitem name="Location"
+                  id="sd_project_overview.project_location_menu"
+                  parent="sd_project_overview.settings_menu"
+                  groups="base.group_system"
+                  action="sd_project_overview.action_window_location"/>
+
+    </data>
+</odoo>

@@ -1,0 +1,128 @@
+<odoo>
+    <data>
+
+        <template id="sd_project_overview.layout" name="Project Overview Layout" inherit_id="web.frontend_layout"
+                  primary="True">
+            <xpath expr="//div[@id='wrapwrap']" position="before">
+                <t t-set="no_livechat" t-value="True"/>
+            </xpath>
+            <xpath expr="//div[@id='wrapwrap']" position="attributes">
+                <!--                <attribute name="t-att-style"-->
+                <!--                           add="(('height: 100%; overflow: auto; background: url(' + '/survey/get_background_image/%s/%s' % (survey.access_token, answer.access_token) + ') no-repeat fixed center; box-shadow: inset 0 0 0 10000px rgba(255,255,255,.7); background-size: cover;') if survey and survey.background_image and answer else 'height: 100%; overflow: auto;')"/>-->
+            </xpath>
+            <xpath expr="//header" position="before">
+                <t t-set="no_header" t-value="True"/>
+                <t t-set="no_footer" t-value="True"/>
+            </xpath>
+            <xpath expr="//header" position="after">
+                <!--                <div id="wrap" class="oe_structure oe_empty"/>-->
+            </xpath>
+        </template>
+        <template id="overview_not_found">
+            <t t-call="sd_project_overview.layout">
+                <t t-set="title">Project Overview</t>
+                <div class="oe_structure">
+                    <div class="container">
+                        <div class="m-5 h3">
+                            Diagram Not found!
+
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        <template id="overview_diagram">
+            <t t-call="sd_project_overview.layout">
+                <t t-set="title">Project Overview Diagram</t>
+                <div class="oe_structure">
+                    <div class="row">
+                        <div class="container">
+
+                            <div class="h1 row">
+
+                                <div class="col-3" t-esc="diagram.project.name"></div>
+                                <div class="col-9" t-esc="diagram.name"></div>
+                            </div>
+                        </div>
+                        <div class="border border-info mx-auto" style="max-width: fit-content; direction: initial;">
+                            <img class="img" t-attf-src="data:image/png;base64,{{diagram.image}}"/>
+                            <div class="draggable_div " t-foreach="locations" t-as="location"
+                                 t-att-style="
+                                    'transform: translate(' + str(location.point_x) + 'px, ' + str(location.point_y) + 'px);' +
+                                    'width:' + str(location.point_w) + 'px;' +
+                                    'height:' + str(location.point_h) + 'px;' +
+                                    'font-size:' + str(location.point_size) + 'px;' +
+                                    'color:' + location.point_color + ';' +
+                                    'border-color:' + location.point_border + ';'
+                                    ">
+                                <div class="box_content">
+                                    <div>
+                                        <span class="progress_name" t-esc="location.task_id.name"></span>
+                                    </div>
+                                    <div>P:
+                                        <span class="progress_plan" t-esc="location.task_id.progress_plan"></span>
+                                        <span style="font-size: .6em">%</span>
+                                    </div>
+                                    <div>A:
+                                        <span class="progress_actual" t-esc="location.task_id.progress_actual"></span>
+                                        <span style="font-size: .6em">%</span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <!--                </div>-->
+            </t>
+        </template>
+
+        <template id="overview">
+            <t t-call="sd_project_overview.layout">
+                <t t-set="title">Project Overview</t>
+                <div class="oe_structure sd_project_overview_frontend">
+                    <div class="container ">
+
+                        <div class="h1 row">
+                            <select class="project_list m-2 form-control col-3"></select>
+                            <select class="diagram_list m-2 form-control col-3"></select>
+                        </div>
+                    </div>
+                    <div class="diagram_content diagram_process_form_view_image mx-auto" style="max-width: fit-content; direction: initial;">
+                        <img class="diagram_image_preview img"   loading="eager" style="position" />
+                        <img class="diagram_image img"   loading="eager" />
+<!--                        <div class="draggable_div " t-foreach="locations" t-as="location"-->
+<!--                             t-att-style="-->
+<!--                                    'transform: translate(' + str(location.point_x) + 'px, ' + str(location.point_y) + 'px);' +-->
+<!--                                    'width:' + str(location.point_w) + 'px;' +-->
+<!--                                    'height:' + str(location.point_h) + 'px;' +-->
+<!--                                    'font-size:' + str(location.point_size) + 'px;' +-->
+<!--                                    'color:' + location.point_color + ';' +-->
+<!--                                    'border-color:' + location.point_border + ';'-->
+<!--                                    ">-->
+<!--                            <div class="box_content">-->
+<!--                                <div>-->
+<!--                                    <span class="progress_name" t-esc="location.task_id.name"></span>-->
+<!--                                </div>-->
+<!--                                <div>P:-->
+<!--                                    <span class="progress_plan" t-esc="location.task_id.progress_plan"></span>-->
+<!--                                    <span style="font-size: .6em">%</span>-->
+<!--                                </div>-->
+<!--                                <div>A:-->
+<!--                                    <span class="progress_actual" t-esc="location.task_id.progress_actual"></span>-->
+<!--                                    <span style="font-size: .6em">%</span>-->
+<!--                                </div>-->
+
+<!--                            </div>-->
+<!--                        </div>-->
+                    </div>
+                </div>
+            </t>
+        </template>
+
+    </data>
+</odoo>

@@ -1,0 +1,72 @@
+<odoo>
+    <data>
+        <!-- ==================================================  sd_project_overview.project ====================-->
+
+        <record model="ir.ui.view" id="sd_project_overview_project_list">
+            <field name="name">Projects</field>
+            <field name="model">sd_project_overview.project</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom" multi_edit="1">
+                    <field name="name"/>
+                    <field name="project" />
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="sd_project_overview_project_base_info_list">
+            <field name="name">Projects Base Info</field>
+            <field name="model">sd_project_overview.project</field>
+            <field name="arch" type="xml">
+                <tree create="0" delete="0">
+                    <field name="name"/>
+                    <field name="project" />
+
+                </tree>
+            </field>
+        </record>
+
+        <!-- ==================================================  Search ====================-->
+
+        <record model="ir.ui.view" id="sd_project_overview_project_list_search">
+            <field name="name">sd_project_overview</field>
+            <field name="model">sd_project_overview.project</field>
+            <field name="arch" type="xml">
+                <search string="Dealers">
+                </search>
+            </field>
+        </record>
+
+        <!-- ==================================================  Action Window ====================-->
+
+        <record model="ir.actions.act_window" id="sd_project_overview.action_window_projects">
+            <field name="name">Project</field>
+            <field name="res_model">sd_project_overview.project</field>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="sd_project_overview_project_list"/>
+        </record>
+
+<!--        <record model="ir.actions.act_window" id="sd_project_overview.action_window_project_task_aa">-->
+<!--            <field name="name">Project aa</field>-->
+<!--            <field name="res_model">project.task_aa</field>-->
+<!--            <field name="view_mode">tree,form</field>-->
+<!--&lt;!&ndash;            <field name="view_id" ref="sd_project_overview_project_list"/>&ndash;&gt;-->
+<!--        </record>-->
+
+        <!-- ==================================================  Menu ====================-->
+
+        <menuitem name="Project"
+                  id="sd_project_overview.project_setting_menu"
+                  parent="sd_project_overview.settings_menu"/>
+
+        <menuitem name="Projects"
+                  id="sd_project_overview.project_types_menu"
+                  parent="sd_project_overview.project_setting_menu"
+                  action="sd_project_overview.action_window_projects"/>
+
+<!--        <menuitem name="Project aa"-->
+<!--                  id="sd_project_overview.project_task_aa_types_menu"-->
+<!--                  parent="sd_project_overview.overview_root_menu"-->
+<!--                  action="sd_project_overview.action_window_project_task_aa"/>-->
+
+    </data>
+</odoo>
